@@ -17,6 +17,8 @@ import { Route as AuthenticatedDiscoverRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedGoalsRouteImport } from './routes/_authenticated/goals'
 import { Route as AuthenticatedMatchesRouteImport } from './routes/_authenticated/matches'
 import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
+import { Route as AuthenticatedProjectsRouteImport } from './routes/_authenticated/projects'
+import { Route as AuthenticatedReputationRouteImport } from './routes/_authenticated/reputation'
 import { Route as AuthenticatedSkillsRouteImport } from './routes/_authenticated/skills'
 
 const IndexRoute = IndexRouteImport.update({
@@ -58,6 +60,16 @@ const AuthenticatedMessagesRoute = AuthenticatedMessagesRouteImport.update({
   path: '/messages',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedProjectsRoute = AuthenticatedProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReputationRoute = AuthenticatedReputationRouteImport.update({
+  id: '/reputation',
+  path: '/reputation',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSkillsRoute = AuthenticatedSkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
@@ -72,6 +84,8 @@ export interface FileRoutesByFullPath {
   '/goals': typeof AuthenticatedGoalsRoute
   '/matches': typeof AuthenticatedMatchesRoute
   '/messages': typeof AuthenticatedMessagesRoute
+  '/projects': typeof AuthenticatedProjectsRoute
+  '/reputation': typeof AuthenticatedReputationRoute
   '/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRoutesByTo {
@@ -82,6 +96,8 @@ export interface FileRoutesByTo {
   '/goals': typeof AuthenticatedGoalsRoute
   '/matches': typeof AuthenticatedMatchesRoute
   '/messages': typeof AuthenticatedMessagesRoute
+  '/projects': typeof AuthenticatedProjectsRoute
+  '/reputation': typeof AuthenticatedReputationRoute
   '/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRoutesById {
@@ -94,6 +110,8 @@ export interface FileRoutesById {
   '/_authenticated/goals': typeof AuthenticatedGoalsRoute
   '/_authenticated/matches': typeof AuthenticatedMatchesRoute
   '/_authenticated/messages': typeof AuthenticatedMessagesRoute
+  '/_authenticated/projects': typeof AuthenticatedProjectsRoute
+  '/_authenticated/reputation': typeof AuthenticatedReputationRoute
   '/_authenticated/skills': typeof AuthenticatedSkillsRoute
 }
 export interface FileRouteTypes {
@@ -106,6 +124,8 @@ export interface FileRouteTypes {
     | '/goals'
     | '/matches'
     | '/messages'
+    | '/projects'
+    | '/reputation'
     | '/skills'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -116,6 +136,8 @@ export interface FileRouteTypes {
     | '/goals'
     | '/matches'
     | '/messages'
+    | '/projects'
+    | '/reputation'
     | '/skills'
   id:
     | '__root__'
@@ -127,6 +149,8 @@ export interface FileRouteTypes {
     | '/_authenticated/goals'
     | '/_authenticated/matches'
     | '/_authenticated/messages'
+    | '/_authenticated/projects'
+    | '/_authenticated/reputation'
     | '/_authenticated/skills'
   fileRoutesById: FileRoutesById
 }
@@ -194,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMessagesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/projects': {
+      id: '/_authenticated/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof AuthenticatedProjectsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reputation': {
+      id: '/_authenticated/reputation'
+      path: '/reputation'
+      fullPath: '/reputation'
+      preLoaderRoute: typeof AuthenticatedReputationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/skills': {
       id: '/_authenticated/skills'
       path: '/skills'
@@ -210,6 +248,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedGoalsRoute: typeof AuthenticatedGoalsRoute
   AuthenticatedMatchesRoute: typeof AuthenticatedMatchesRoute
   AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
+  AuthenticatedProjectsRoute: typeof AuthenticatedProjectsRoute
+  AuthenticatedReputationRoute: typeof AuthenticatedReputationRoute
   AuthenticatedSkillsRoute: typeof AuthenticatedSkillsRoute
 }
 
@@ -219,6 +259,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedGoalsRoute: AuthenticatedGoalsRoute,
   AuthenticatedMatchesRoute: AuthenticatedMatchesRoute,
   AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
+  AuthenticatedProjectsRoute: AuthenticatedProjectsRoute,
+  AuthenticatedReputationRoute: AuthenticatedReputationRoute,
   AuthenticatedSkillsRoute: AuthenticatedSkillsRoute,
 }
 
